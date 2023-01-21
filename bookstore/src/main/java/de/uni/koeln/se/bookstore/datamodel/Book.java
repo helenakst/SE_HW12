@@ -19,10 +19,10 @@ public class Book {
 	
 	public Book() {}
 	
-	public Book(String name, String author, Integer year, Double price) {
+	public Book(String name, String author, Integer publishYear, Double price) {
 		this.name = name;
 		this.author = author;
-		this.publishYear = year;
+		this.publishYear = publishYear;
 		this.price = price;
 	}
 	
@@ -52,12 +52,12 @@ public class Book {
 		this.author = author;
 	}
 
-	public Integer getYear() {
+	public Integer getPublishYear() {
 		return publishYear;
 	}
 
-	public void setYear(Integer year) {
-		this.publishYear = year;
+	public void setPublishYear(Integer publishYear) {
+		this.publishYear = publishYear;
 	}
 
 	public Double getPrice() {
