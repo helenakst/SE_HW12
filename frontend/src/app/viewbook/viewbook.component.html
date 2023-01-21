@@ -1,0 +1,61 @@
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Year</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="books.length == 0">
+                <td colspan="5" style="text-align: center"><h2>There are no products yet</h2></td>
+            </tr>
+            <tr *ngIf="showOldest; else latest">
+                <th>{{oldestBook.id}}</th>
+                <td>{{oldestBook.name}}</td>
+                <td>{{oldestBook.author}}</td>
+                <td>{{oldestBook.publishYear}}</td>
+                <td>{{oldestBook.price}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="DeleteBook(oldestBook.id)">Delete</button>
+                </td>
+            </tr>
+            <ng-template #latest>
+                <tr *ngIf="showLatest; else allBooks">
+                <th>{{latestBook.id}}</th>
+                <td>{{latestBook.name}}</td>
+                <td>{{latestBook.author}}</td>
+                <td>{{latestBook.publishYear}}</td>
+                <td>{{latestBook.price}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="DeleteBook(latestBook.id)">Delete</button>
+                </td>
+            </tr>
+            </ng-template>
+            
+            <ng-template #allBooks>
+                <tr *ngFor="let book of books">
+                <th>{{book.id}}</th>
+                <td>{{book.name}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.publishYear}}</td>
+                <td>{{book.price}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="DeleteBook(book.id)">Delete</button>
+                </td>
+            </tr>
+            </ng-template>
+            
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" (click)="RedirectToAddBook()">Add new book</button>
+    <button type="button" class="btn btn-secondary" (click)="ShowOldestBook()">Show oldest book</button>
+    <button type="button" class="btn btn-secondary" (click)="ShowLatestBook()">Show latest book</button>
+    <button type="button" class="btn btn-secondary" (click)="ShowAllBooks()">Show all books</button>
+
+</div>
